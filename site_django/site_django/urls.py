@@ -16,8 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.http import HttpResponseRedirect
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('book/', include('book.urls')),  # Incluye las URLs de la app "book"
+    path('', lambda request: HttpResponseRedirect('/book/')),  # Redirige al índice de "book"
 ]
